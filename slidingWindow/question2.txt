@@ -1,0 +1,19 @@
+The Scenario:
+You are building an autocorrect system for a keyboard that occasionally misfires. Sometimes, when a user types a word, the keyboard inserts an extra, incorrect letter somewhere inside it.
+
+You need to write a validation check that confirms if the user's typed word is a valid "subsequence" of the correct dictionary word.
+
+The Rules of Subsequences:
+A subsequence means all the letters of the target word exist in the typed word, and they appear in the exact same relative order, but they don't have to be strictly sitting right next to each other.
+
+If the target is "cat", then "crat" is valid. "chart" is valid. "tca" is invalid (wrong order).
+
+Expected Input:
+
+target: The correct word (e.g., "abc")
+
+typed: The word the user actually typed (e.g., "ahbgdc")
+
+Expected Output:
+
+A true/false boolean. Return true if target is a valid subsequence of typed.

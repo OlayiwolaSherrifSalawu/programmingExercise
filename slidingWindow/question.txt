@@ -1,0 +1,28 @@
+Challenge 002: The Overheated Server
+The Scenario:
+You are monitoring a high-performance server. You receive an automated log containing the server's exact temperature recorded every single minute.
+
+The server crashed, and the hardware team believes it was caused by sustained heat over a specific block of time. They need you to find the specific contiguous 5-minute window where the sum of the temperatures was the absolute highest.
+
+The Data Structure & Rules:
+
+You cannot sort the data (doing so would destroy the chronological timeline).
+
+"Contiguous" means the numbers must be sitting right next to each other in the exact order they were recorded.
+
+Expected Input:
+
+temperatures: A list of integers representing the temperature at each minute.
+
+window_size: An integer representing the number of contiguous minutes you need to check (in this case, 5).
+
+Example Input: temperatures = [70, 75, 80, 72, 74, 90, 85, 88, 86, 80, 60], window_size = 5
+
+Expected Output:
+
+A single integer representing the maximum total heat sum found within any 5-minute block.
+
+Example Output: 429 (This is the sum of the contiguous block [90, 85, 88, 86, 80]).
+
+Your Goal:
+You could add up minutes 1-5, then start over and add up minutes 2-6, then start over and add up minutes 3-7... but that involves repeatedly adding numbers you have already looked at.
