@@ -47,10 +47,10 @@ func correctOrder(word, target string) bool {
 	}
 	return false
 }
+
 func stripHtml(s string) string {
 	tag := map[string]string{
 		"<":  ">",
-		"</": ">",
 	}
 	store := ""
 	tags := ""
