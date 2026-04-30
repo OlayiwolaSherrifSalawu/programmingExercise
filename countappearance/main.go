@@ -69,7 +69,6 @@ func sortSlice(s []string) []string {
 			if s[j] >= s[j+1] {
 				s[j], s[j+1] = s[j+1], s[j]
 			}
-
 		}
 	}
 	return s

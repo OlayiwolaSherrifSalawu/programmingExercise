@@ -8,7 +8,7 @@ import (
 func main() {
 	// fmt.Println(maxTemp([]int{70, 75, 80, 72, 74, 90, 85, 88, 86, 80, 60}, 3))
 	// fmt.Println(correctOrder("act", "cat"))
-	fmt.Println(dnaAnalyser("leetcode", 3))
+	fmt.Printf("%q\n", AddSpaceAndSplit("Hello,"))
 }
 
 func maxTemp(slic []int, n int) ([]int, int) {
@@ -81,7 +81,7 @@ func stripHtml(s string) string {
 }
 
 func dnaAnalyser(s string, n int) string {
-if len(s) < n {
+	if len(s) < n {
 		return ""
 	}
 	maxCount := 0
@@ -97,7 +97,7 @@ if len(s) < n {
 	}
 	maxSequence = sequce
 	count = maxCount
-	
+
 	for j := n; j < len(s); j++ {
 		sequce = sequce[1:] + string(s[j])
 		if strings.Contains(vowels, string(s[j])) {
@@ -112,4 +112,18 @@ if len(s) < n {
 		}
 	}
 	return maxSequence
+}
+
+func AddSpaceAndSplit(s string) []string {
+	res := ""
+	for _, val := range s {
+		if strings.Contains(",.:;!?", string(val)) {
+			res += " " + string(val)
+			continue
+		}
+		res += string(val)
+	}
+	resul := strings.Fields(res)
+	
+	return resul
 }
