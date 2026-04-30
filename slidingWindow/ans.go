@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
 	// fmt.Println(maxTemp([]int{70, 75, 80, 72, 74, 90, 85, 88, 86, 80, 60}, 3))
 	// fmt.Println(correctOrder("act", "cat"))
-	fmt.Println(stripHtml("<b>bold</b> <html>ola</html>"))
+	fmt.Println(dnaAnalyser("leetcode", 3))
 }
 
 func maxTemp(slic []int, n int) ([]int, int) {
@@ -50,7 +51,7 @@ func correctOrder(word, target string) bool {
 
 func stripHtml(s string) string {
 	tag := map[string]string{
-		"<":  ">",
+		"<": ">",
 	}
 	store := ""
 	tags := ""
@@ -77,4 +78,38 @@ func stripHtml(s string) string {
 		}
 	}
 	return store
+}
+
+func dnaAnalyser(s string, n int) string {
+if len(s) < n {
+		return ""
+	}
+	maxCount := 0
+	sequce := ""
+	maxSequence := ""
+	vowels := "aeiouAEIOU"
+	count := 0
+	for i := 0; i < n; i++ {
+		if strings.Contains(vowels, string(s[i])) {
+			maxCount++
+		}
+		sequce += string(s[i])
+	}
+	maxSequence = sequce
+	count = maxCount
+	
+	for j := n; j < len(s); j++ {
+		sequce = sequce[1:] + string(s[j])
+		if strings.Contains(vowels, string(s[j])) {
+			count++
+		}
+		if strings.Contains(vowels, string(s[j-n])) {
+			count--
+		}
+		if count > maxCount {
+			maxCount = count
+			maxSequence = sequce
+		}
+	}
+	return maxSequence
 }
