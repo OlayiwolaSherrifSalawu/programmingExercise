@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
+	"maps"
 	"strings"
 )
 
 func main() {
 	// fmt.Println(maxTemp([]int{70, 75, 80, 72, 74, 90, 85, 88, 86, 80, 60}, 3))
 	// fmt.Println(correctOrder("act", "cat"))
-	fmt.Println(dnaAnalyser("xyaweio4tuidgertfgieieieu", 6))
+	fmt.Println(AnagramDective("cbaebabacd", "abc"))
 }
 
 func maxTemp(slic []int, n int) ([]int, int) {
@@ -77,15 +78,25 @@ func AnagramDective(s, target string) []int {
 	for _, val := range target {
 		targetMap[string(val)] = targetMap[string(val)] + 1
 	}
+	// "cbaebabacd", "abc"
 	for i := 0; i < len(target); i++ {
 		wordMap[string(s[i])] = wordMap[string(s[i])] + 1
-		_, targetVal := targetMap[string(s[i])]
-		_, wordVal := wordMap[string(s[i])]
-		if targetVal != wordVal {
+		if targetMap[string(s[i])] != wordMap[string(s[i])] {
 			isAnagram = false
 		}
 	}
 	if isAnagram {
 		angramIndex = append(angramIndex, 0)
 	}
+	for i := len(target); i < len(s); i++ {
+		wordMap[string(s[i])] = wordMap[string(s[i])] + 1
+		wordMap[string(s[i-len(target)])] = wordMap[string(s[i-len(target)])] - 1
+		if wordMap[string(s[i-len(target)])] == 0 {
+			delete(wordMap, string(s[i-len(target)]))
+		}
+		if maps.Equal(wordMap, targetMap) {
+			angramIndex = append(angramIndex, i-len(target)+1)
+		}
+	}
+	return angramIndex
 }
