@@ -1,6 +1,7 @@
-package piscine
+package main
 
 import (
+	"slices"
 	"strconv"
 	"strings"
 )
@@ -94,4 +95,33 @@ func NotDecimal(s string) string {
 	}
 	result := strconv.Itoa(oldVal)
 	return minus + result
+}
+
+func Brackets(s string) bool {
+	brackets := map[string]string{
+		"(": ")",
+		"{": "}",
+		"[": "]",
+	}
+	stack := []string{}
+	for _, val := range s {
+		sVal := string(val)
+		if vals, ok := brackets[sVal]; ok {
+			stack = append(stack, vals)
+		}
+		if len(stack) != 0 {
+			if vals, _ := brackets[stack[len(stack)-1]]; vals == sVal {
+				slices.Delete(stack, len(stack)-1, len(stack))
+			}
+		} else if len(stack) == 0 {
+			if _, ok := brackets[sVal]; !ok {
+				return false
+			}
+		}
+
+	}
+	if len(stack) != 0 {
+		return false
+	}
+	return true
 }

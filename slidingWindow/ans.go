@@ -56,7 +56,6 @@ func dnaAnalyser(s string, n int) string {
 	count = maxCount
 
 	for j := n; j < len(s); j++ {
-
 		if strings.Contains(vowels, string(s[j])) {
 			count++
 		}
