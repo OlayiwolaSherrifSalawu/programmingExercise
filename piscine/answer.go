@@ -103,6 +103,7 @@ func Brackets(s string) bool {
 		"{": "}",
 		"[": "]",
 	}
+	isClosing := false
 	stack := []string{}
 	for _, val := range s {
 		sVal := string(val)
@@ -115,9 +116,19 @@ func Brackets(s string) bool {
 			}
 		}
 		if len(stack) != 0 {
-			if vals, _ := brackets[stack[len(stack)-1]]; vals == sVal {
-				stack = slices.Delete(stack, len(stack)-1, len(stack))
+			for _, val := range brackets {
+				if val == sVal {
+					isClosing = true
+				}
 			}
+			if isClosing {
+				if vals, _ := brackets[stack[len(stack)-1]]; vals == sVal {
+					stack = slices.Delete(stack, len(stack)-1, len(stack))
+				} else {
+					return false
+				}
+			}
+
 		}
 
 	}
@@ -125,4 +136,23 @@ func Brackets(s string) bool {
 		return true
 	}
 	return false
+}
+
+func isBadVersion(version int) bool {
+	return version == 2
+}
+
+func findBadVersion(commitNum int) int {
+	commitNum = commitNum / 2
+	badVersion := commitNum
+	for commitNum != 0 {
+		if isBadVersion(commitNum) {
+			badVersion += commitNum / 2
+		} else {
+			badVersion -= commitNum / 2
+		}
+		commitNum = badVersion
+		commitNum = commitNum / 2
+	}
+	return badVersion
 }
