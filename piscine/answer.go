@@ -143,16 +143,16 @@ func isBadVersion(version int) bool {
 }
 
 func findBadVersion(commitNum int) int {
-	commitNum = commitNum / 2
-	badVersion := commitNum
-	for commitNum != 0 {
-		if isBadVersion(commitNum) {
-			badVersion += commitNum / 2
+	right := commitNum
+	left := 1
+	mid := (right + left) / 2
+	for left < right {
+		if isBadVersion(mid) {
+			right = mid
 		} else {
-			badVersion -= commitNum / 2
+			left = mid + 1
 		}
-		commitNum = badVersion
-		commitNum = commitNum / 2
+		mid = (right + left) / 2
 	}
-	return badVersion
+	return mid
 }
