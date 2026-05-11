@@ -77,7 +77,7 @@ func AnagramDective(s, target string) []int {
 	for _, val := range target {
 		targetMap[string(val)] = targetMap[string(val)] + 1
 	}
-	// "cbaebabacd", "abc"
+
 	for i := 0; i < len(target); i++ {
 		wordMap[string(s[i])] = wordMap[string(s[i])] + 1
 		if targetMap[string(s[i])] != wordMap[string(s[i])] {
