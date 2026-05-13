@@ -48,3 +48,6 @@ func nestedSums(items []any) int {
 	}
 	return total
 }
+func nestedSum1(items []any) int {
+	
+}
