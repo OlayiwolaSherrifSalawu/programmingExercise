@@ -1,11 +1,5 @@
 package main
 
-import "fmt"
-
-func main() {
-	val := nestedSum([]any{[]any{}, []any{1, []any{}}, 2})
-	fmt.Println(val)
-}
 func nestedSum(items []any) int {
 	theIndex := 0
 	value := []any{}
@@ -39,4 +33,18 @@ func nestedSum(items []any) int {
 	items = value
 
 	return nestedSum(items)
+}
+
+func nestedSums(items []any) int {
+	total := 0
+
+	for _, val := range items {
+		if s, ok := val.(int); ok {
+			total += s
+		}
+		if s, ok := val.([]any); ok {
+			total += nestedSum(s)
+		}
+	}
+	return total
 }
