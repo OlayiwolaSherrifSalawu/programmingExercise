@@ -48,6 +48,16 @@ func nestedSums(items []any) int {
 	}
 	return total
 }
+
 func nestedSum1(items []any) int {
-	
+	if len(items) == 0 {
+		return 0
+	}
+	var head int
+	if s, ok := items[0].(int); ok {
+		head = s
+	} else if s, ok := items[0].([]any); ok {
+		head = nestedSum1(s)
+	}
+	return head + nestedSum1(items[1:])
 }
