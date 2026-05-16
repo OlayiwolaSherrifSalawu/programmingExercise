@@ -1,16 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"math"
 	"strconv"
 	"strings"
 )
 
-func main() {
-	val := Ip4("10.0.0.0", "10.0.0.50")
-	fmt.Println(val)
-}
 func AddByPower(s []string) int {
 	indes := len(s) - 1
 	total := 0
