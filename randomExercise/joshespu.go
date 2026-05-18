@@ -1,13 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"slices"
 )
 
-func main() {
-	fmt.Println(JospehPermutation([]int{1, 2, 3, 4, 5, 6, 7}, 3))
-}
 func JospehPermutation(s []int, kill int) []int {
 	res := []int{}
 	killCount := 1
@@ -21,8 +17,9 @@ func JospehPermutation(s []int, kill int) []int {
 		} else {
 			s = slices.Delete(s, 0, 1)
 			s = append(s, targetedPerson)
+			killCount++
+
 		}
-		killCount++
 	}
 	return res
 }
