@@ -3,5 +3,5 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(howShiftworks(4, 4))
+	fmt.Println(howShiftworks(7, 6))
 }
