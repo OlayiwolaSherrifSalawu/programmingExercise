@@ -3,5 +3,5 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(howShiftworks(7, 6))
+	fmt.Println(removeZeros([]int{2, 3, 0, 4, 0, 9, 0}))
 }
