@@ -31,5 +31,6 @@ func DetectCollision(head *WayPoint) bool {
 			return true
 		}
 	}
+
 	return false
 }

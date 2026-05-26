@@ -1,4 +1,4 @@
-package main
+package read
 
 import (
 	"embed"
@@ -6,10 +6,10 @@ import (
 )
 
 //go:embed text.txt static/*
-var embedded embed.FS
+var Embedded embed.FS
 
 func main() {
-	file, _ := embedded.ReadFile("static/index.html")
+	file, _ := Embedded.ReadFile("static/index.html")
 
 	fmt.Println(string(file))
 }
