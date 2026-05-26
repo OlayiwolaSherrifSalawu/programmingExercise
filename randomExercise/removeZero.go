@@ -1,21 +1,20 @@
 package main
 
+import (
+	"slices"
+)
+
 func removeZeros(si []int) []int {
 	// two pointer approach
-	seenZero := false
-	i := 0
-	for j := 0; j < len(si); j++ {
-		if si[i] == 0 && si[j] > 0 && seenZero {
+	i := slices.Index(si, 0)
+	if i < 0 {
+		return si
+	}
+	for j := i + 1; j < len(si); j++ {
+		if si[j] > 0 {
 			temp := si[i]
 			si[i] = si[j]
 			si[j] = temp
-			i++
-		}
-
-		if si[i] == 0 && seenZero == false {
-			seenZero = true
-		}
-		if si[i] != 0 && seenZero == false {
 			i++
 		}
 	}
