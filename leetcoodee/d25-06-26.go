@@ -33,11 +33,8 @@ s[0] == '0'
 1 <= minJump <= maxJump < s.length**/
 
 func canReach(s string, minJump int, maxJump int) bool {
-	for i, j := 0, maxJump; i < len(s); {
-
-		if i+minJump < len(s) && s[i+minJump] == '0' {
-		i=	i + minJump
-		}
-
+	if s[0] != '0' && s[len(s)-1] == '0' {
+		return false
 	}
+	reachable := 
 }
