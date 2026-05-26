@@ -1,22 +1,24 @@
 package main
 
-import "slices"
-
 func removeZeros(si []int) []int {
-	count := 0
+	// two pointer approach
+	seenZero := false
 	i := 0
-	for {
-		theO := si[i]
-		if si[i] == 0 {
-			si = slices.Delete(si, i, i+1)
-			si = append(si, theO)
-			count++
-			i--
+	for j := 0; j < len(si); j++ {
+		if si[i] == 0 && si[j] > 0 && seenZero {
+			temp := si[i]
+			si[i] = si[j]
+			si[j] = temp
+			i++
 		}
-		i++
-		if count+i == len(si)-1 {
-			break
+
+		if si[i] == 0 && seenZero == false {
+			seenZero = true
+		}
+		if si[i] != 0 && seenZero == false {
+			i++
 		}
 	}
 	return si
+
 }
