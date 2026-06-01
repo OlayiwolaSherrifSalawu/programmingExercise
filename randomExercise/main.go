@@ -1,13 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"interview/leetcoodee"
+)
 
 func main() {
 
-	fmt.Println(removeZeros([]int{0, 0, 1, 2}))
-
-	fmt.Println(removeZeros([]int{1, 2, 0, 3, 0}))
-	fmt.Println(removeZeros([]int{0}))
-	fmt.Println(removeZeros([]int{1, 2, 3}))
+	fmt.Println(leetcoodee.CanReach("011010", 2, 3))
 
 }

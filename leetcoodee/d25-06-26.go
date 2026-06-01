@@ -32,9 +32,33 @@ s[i] is either '0' or '1'.
 s[0] == '0'
 1 <= minJump <= maxJump < s.length**/
 
-func canReach(s string, minJump int, maxJump int) bool {
-	if s[0] != '0' && s[len(s)-1] == '0' {
+func CanReach(s string, minJump int, maxJump int) bool {
+	if s[0] != '0' {
+
 		return false
 	}
-	reachable := 
+	if s[len(s)-1] != '0' {
+		return false
+	}
+
+	reachable := make([]bool, len(s))
+	reachable[0] = true
+	count := 0
+
+	for j := 1; j < len(s); j++ {
+		end := j - maxJump - 1
+		start := j - minJump
+
+		if end >= 0 && reachable[end] == true {
+			count--
+		}
+		if start >= 0 && reachable[start] == true {
+			count++
+		}
+		if count > 0 && s[j] == '0' {
+			reachable[j] = true
+		}
+	}
+
+	return reachable[len(reachable)-1]
 }
