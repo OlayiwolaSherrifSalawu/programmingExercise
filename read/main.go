@@ -18,9 +18,15 @@ func rpnCalc(s string) string{
 		nu, err:= strconv.Atoi(rpn[i])
 		if err != nil{
 			if strings.ContainsAny(operator, rpn[i]){
-
+				op= rpn[i]
+			}else{
+				return "ERROR"
 			}
 		}
 	}
 
+}
+
+func opSolve(s string, st []int) string {
+	
 }
