@@ -1,15 +1,26 @@
 package main
 
 import (
-	"embed"
-	"fmt"
+	"strconv"
+	"strings"
 )
 
-//go:embed text.txt static/*
-var Embedded embed.FS
-
 func main() {
-	file, _ := Embedded.ReadFile("static/index.html")
+	// longest sub string in a string
 
-	fmt.Println(string(file))
+}
+func rpnCalc(s string) string{
+	operator:= "-+/%*"
+	rpn := strings.Fields(s)
+	stack := []int{}
+	for i:= 0; i < len(rpn); i++{
+		op:= ""
+		nu, err:= strconv.Atoi(rpn[i])
+		if err != nil{
+			if strings.ContainsAny(operator, rpn[i]){
+
+			}
+		}
+	}
+
 }
